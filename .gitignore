@@ -34,6 +34,5 @@ build/
 
 
 ### DB관련 properties ###
-.gitignore
-.idea
-*.properties
+
+*.propertiesapplication.properties
