@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.propertiesapplication.properties
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,4 +36,3 @@ build/
 
 ### DB관련 properties ###
 
-*.propertiesapplication.properties
