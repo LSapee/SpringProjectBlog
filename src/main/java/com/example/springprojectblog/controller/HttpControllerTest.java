@@ -11,7 +11,7 @@ public class HttpControllerTest {
 
     private static final String TAG = "HttpControllerTest : ";
 
-    @GetMapping("http/lombok")
+    @GetMapping("/http/lombok")
     public String lombokTest(){
 //      Member m = new Member(1,"asd","dsa","email");
 //      builder 사용시
