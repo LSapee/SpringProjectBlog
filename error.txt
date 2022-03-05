@@ -1,0 +1,47 @@
+
+1. sql 에러
+[2022-03-05 20:52:23] [42000][1044] Access denied for user 'Lee'@'%' to database 'information_schema'
+[42000][1044] Access denied for user 'Lee'@'%' to database 'information_schema'
+
+해결 권한 부여문제제GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'new_master_user'@'%' WITH GRANT OPTION;
+
+참고한 사이트
+https://aws.amazon.com/ko/premiumsupport/knowledge-center/duplicate-master-user-mysql/
+
+2. sql 에러
+jpa ddl이 실행이 안됨
+
+2022-03-06 01:20:04.243  WARN 16276 --- [  restartedMain] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table Users (
+       id integer not null auto_increment,
+        createDate datetime(6),
+        email varchar(50) not null,
+        password varchar(50) not null,
+        role varchar(255) default user,
+        username varchar(30) not null,
+        primary key (id)
+    ) engine=InnoDB" via JDBC Statement
+
+해결을 위해 시도방법
+1. 예약어가 변수에 있는지 확인 -> 없어서 아니다.
+2. yml 부분 변경
+변경 전
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+변경 후
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.hbm2ddl.auto: create
+
+여전히 안된다.
+
+해결
+yml에서 url의 스키마 설정을 생략했었다.
+url 포트뒤에 스키마 적었는지 확인 해주자.
+
+
