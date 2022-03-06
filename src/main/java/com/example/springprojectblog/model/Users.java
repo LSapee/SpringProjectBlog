@@ -1,19 +1,21 @@
 package com.example.springprojectblog.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.sql.Timestamp;
 
-@Data
+@Data //getset
 @Entity  //User 클래스를 읽어서 MySQL에 테이블이 생성된다.
+@NoArgsConstructor  //빈 생성자
+@AllArgsConstructor // 전체 생성자
+@Builder //
+//@DynamicInsert 더미데이터 알아서 제거
 public class Users {
 
     @Id
@@ -30,9 +32,9 @@ public class Users {
     @Column(nullable = false, length = 50)
     private String email;
 
-    //Enum을 쓰는게 좋다.
-    @ColumnDefault("'user'")
-    private String role;
+// DB는 Role타입이라는게 없어서
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     // 시간이 자동으로 입력됨
     @CreationTimestamp
