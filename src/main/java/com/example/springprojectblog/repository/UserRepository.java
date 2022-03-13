@@ -9,12 +9,14 @@ import org.springframework.data.jpa.repository.Query;
 //@Repository //생략 가능
 public interface UserRepository extends JpaRepository<Users, Integer> {
 
+
+
+
+}
 //    로그인을 위한 함수
 //    JPA네이밍 전략
 //    Select * from users where username =? and password = ? ; 쿼리가 실행됨
-    Users findByUsernameAndPassword(String username, String password);
+//    Users findByUsernameAndPassword(String username, String password);
 
 //    @Query(value = Select * from users where username =?1 and password = ?2" nativeQuery=true)
 //    Users login(String username, String password);
-    
-}

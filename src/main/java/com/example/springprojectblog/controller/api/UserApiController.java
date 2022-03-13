@@ -19,7 +19,7 @@ public class UserApiController {
     private UserService userService;
 
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody Users users){
         System.out.println("save 호출");
 //        실제로 DB에 insert를 하고 아래에서 리턴
@@ -27,6 +27,11 @@ public class UserApiController {
         userService.save(users);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
+
+
+
+
+
 /*  스프링 시큐리티 사용시 다른 방식으로 로그인을 함
     @Autowired
     private HttpSession session;
@@ -41,4 +46,5 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
     */
+
 }

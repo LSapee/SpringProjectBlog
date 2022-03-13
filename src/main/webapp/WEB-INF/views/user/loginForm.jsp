@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="layout/header.jsp" %>
+<%@ include file="../layout/header.jsp" %>
 
 <div class="container">
     <h2>Login</h2>
-    <form>
+    <form action ="#" method="post">
         <div class="form-group">
             <label for="username">UserName:</label>
             <input type="username" class="form-control" id="username"  name="username">
@@ -19,10 +19,8 @@
                 <input class="form-check-input" type="checkbox" name="remember"> Remember me
             </label>
         </div>
+        <button id="btn-login" class="btn btn-primary">Login</button>
     </form>
-    <button id="btn-login" class="btn btn-primary">Login</button>
 </div>
 
-
-<script src="/js/user.js"></script>
-<%@ include file="layout/footer.jsp" %>
+<%@ include file="../layout/footer.jsp" %>

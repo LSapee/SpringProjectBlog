@@ -44,10 +44,10 @@
             <c:when test="${empty principal}">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/loginForm">Login</a>
+                        <a class="nav-link" href="/auth/loginForm">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/joinForm">Join</a>
+                        <a class="nav-link" href="/auth/joinForm">Join</a>
                     </li>
                 </ul>
             </c:when>
@@ -57,7 +57,7 @@
                         <a class="nav-link" href="/board/form">글쓰기</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/userform">회원정보</a>
+                        <a class="nav-link" href="/user/userform">회원정보</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">로그아웃</a>
