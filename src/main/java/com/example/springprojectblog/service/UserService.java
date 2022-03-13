@@ -1,8 +1,10 @@
 package com.example.springprojectblog.service;
 
+import com.example.springprojectblog.model.Role;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,9 +16,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
     @Transactional
     public void save(Users users) {
+
+        String rawPassword = users.getPassword();//원래 비밀번호
+        String endPassword =encoder.encode(rawPassword);//해쉬
+        users.setRole(Role.USER);
+        users.setPassword(endPassword);
         userRepository.save(users);
+
+
 //        try {
 //            return 1;//회원가입이 되었을때
 //        } catch (Exception e) {
