@@ -18,6 +18,9 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private HttpSession session;
+
     @PostMapping("/api/user")
     public ResponseDto<Integer> save(@RequestBody Users users){
         System.out.println("save 호출");
@@ -28,7 +31,7 @@ public class UserApiController {
     }
 
     @PostMapping("/api/user/login")
-    public ResponseDto<Integer> login(@RequestBody Users users, HttpSession session){
+    public ResponseDto<Integer> login(@RequestBody Users users){
         Users principal = userService.login(users);
         if(principal != null){
             session.setAttribute("principal",principal );
