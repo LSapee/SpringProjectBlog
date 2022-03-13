@@ -4,14 +4,14 @@
 
 <div class="container">
     <h2>Login</h2>
-    <form action="/action_page.php">
+    <form>
         <div class="form-group">
             <label for="username">UserName:</label>
-            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+            <input type="username" class="form-control" id="username"  name="username">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            <input type="password" class="form-control" id="password"  name="password">
         </div>
 
         <div class="form-group form-check">
@@ -19,7 +19,10 @@
                 <input class="form-check-input" type="checkbox" name="remember"> Remember me
             </label>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <button id="btn-login" class="btn btn-primary">Login</button>
 </div>
+
+
+<script src="/blog/js/user.js"></script>
 <%@ include file="../layout/footer.jsp" %>
