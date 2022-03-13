@@ -18,8 +18,6 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private HttpSession session;
 
     @PostMapping("/api/user")
     public ResponseDto<Integer> save(@RequestBody Users users){
@@ -29,6 +27,9 @@ public class UserApiController {
         userService.save(users);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
+/*  스프링 시큐리티 사용시 다른 방식으로 로그인을 함
+    @Autowired
+    private HttpSession session;
 
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody Users users){
@@ -39,4 +40,5 @@ public class UserApiController {
 
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
+    */
 }
