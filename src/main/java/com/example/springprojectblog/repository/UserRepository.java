@@ -4,12 +4,14 @@ import com.example.springprojectblog.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Optional;
+
 //DAO
 //자동으로 bean등록
 //@Repository //생략 가능
 public interface UserRepository extends JpaRepository<Users, Integer> {
 
-
+    Optional<Users> findByUsername(String username);
 
 
 }
