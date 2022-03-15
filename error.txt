@@ -44,4 +44,7 @@ spring:
 yml에서 url의 스키마 설정을 생략했었다.
 url 포트뒤에 스키마 적었는지 확인 해주자.
 
+2022-03-15 22:32:42.141  WARN 25508 --- [nio-8000-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+post mapping error -form antion, controller mapping check
+
 
