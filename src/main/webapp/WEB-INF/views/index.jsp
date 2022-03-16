@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class="card m-10" style="width:300px">
-            <img class="card-img-top" src="a.png" alt="Card image" style="width:100%">
+            <img class="card-img-top" src="img/a.png" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">제목</h4>
                 <p class="card-text">내용</p>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="card m-10" style="width:300px">
-            <img class="card-img-top" src="a.png" alt="Card image" style="width:100%">
+            <img class="card-img-top" src="img/a.png" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">제목</h4>
                 <p class="card-text">내용</p>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="card m-10" style="width:300px">
-            <img class="card-img-top" src="a.png" alt="Card image" style="width:100%">
+            <img class="card-img-top" src="img/a.png" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">제목</h4>
                 <p class="card-text">내용</p>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="card m-10" style="width:300px">
-            <img class="card-img-top" src="a.png" alt="Card image" style="width:100%">
+            <img class="card-img-top" src="img/a.png" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">제목</h4>
                 <p class="card-text">내용</p>

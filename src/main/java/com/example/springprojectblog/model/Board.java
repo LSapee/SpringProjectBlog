@@ -27,7 +27,6 @@ public class Board {
     @Lob // 대용량 데이터를 사용할 때 쓰는 어노테이션
     private String content; // 게시글
 
-    @ColumnDefault("0")
     private int count; // 조회수
 
     @ManyToOne(fetch = FetchType.EAGER) // 연관관계 Many = board , One = User
