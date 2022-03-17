@@ -5,6 +5,7 @@
 <%@ include file="layout/header.jsp"%>
 
     <div class="container">
+<%--        게시글 반복하기--%>
         <c:forEach var="board" items="${boards}">
         <div class="card m-10" style="width:300px">
             <img class="card-img-top" src="img/a.png" alt="Card image" style="width:100%">
