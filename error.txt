@@ -48,3 +48,5 @@ url 포트뒤에 스키마 적었는지 확인 해주자.
 post mapping error -form antion, controller mapping check
 
 깃에러남
+error:failed to push some refs to -> github에 내 로컬저장소에 없는 파일이 있으면 발생하는 오류.
+해결방법 : 풀 먼저하고 다시 푸쉬처리
