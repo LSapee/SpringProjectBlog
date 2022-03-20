@@ -50,3 +50,18 @@ post mapping error -form antion, controller mapping check
 깃에러남
 error:failed to push some refs to -> github에 내 로컬저장소에 없는 파일이 있으면 발생하는 오류.
 해결방법 : 풀 먼저하고 다시 푸쉬처리
+
+405 delete  에러
+    에러코드
+    <div>
+        글 번호 :<span id="id"><i>${board.id}</i></span>
+        작성자 : <span><i>${board.users.username}</i></span>
+    </div>
+    고친코드
+      <div>
+        글 번호 :<span id="id"><i>${board.id} </i></span>
+        작성자 : <span><i>${board.users.username}</i></span>
+    </div>
+    
+   바뀐점 i태그 안에 띄어쓰기
+    
