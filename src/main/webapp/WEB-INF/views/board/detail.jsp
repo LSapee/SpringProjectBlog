@@ -5,7 +5,10 @@
         <button class="btn btn-secondary" onclick="history.back()">
             돌아가기
         </button>
+        <c:if test="${board.users.id == principal.users.id}">
+            <a href="/board/${board.id}/updateForm" class="btn btn-warning">수정</a>
             <button id="btn-delete" class="btn btn-danger">삭제</button>
+        </c:if>
         <br/>
         <div>
             글 번호 :<span id="id"><i>${board.id} </i></span>
@@ -22,7 +25,6 @@
 
         </div>
         <hr>
-        <button id="btn-save" class="btn btn-primary">글쓰기 완료</button>
     </div>
 
 <script src="/js/board.js"></script>

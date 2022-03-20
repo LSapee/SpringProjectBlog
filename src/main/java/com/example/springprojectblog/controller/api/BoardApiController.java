@@ -28,4 +28,9 @@ public class BoardApiController {
         System.out.println(id);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
+    @PutMapping("/api/board/{id}")
+    public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board){
+        boardService.update(id,board);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+    }
 }

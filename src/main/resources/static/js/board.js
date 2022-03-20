@@ -6,7 +6,9 @@ index = {
         });
         $("#btn-delete").on("click", () => {
             this.deleteById();
-            alert(id);
+        });
+        $("#btn-update").on("click", () => {
+            this.update();
         });
     },
     save: function () {
@@ -46,6 +48,31 @@ index = {
         }).fail(function(error){
             alert(JSON.stringify(error));
         });
+    },
+    update: function () {
+        let id = $("#id").val();
+
+        let data = {
+            title: $("#title").val(),
+            content: $("#content").val(),
+
+        };
+
+        $.ajax({
+            type: "PUT", //전송방식
+            url: "/api/board/"+id,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8", //body데이터가 어떤 타입인지 (MIME)
+            dataType: "json"//요청을 서버로해서 응답이 왔을 때
+        }).done(function (resp) {
+
+            alert("글 수정이 완료되었습니다.");
+            console.log(resp);
+            location.href = "/";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });//ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청
+
     },
 };
 
