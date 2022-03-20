@@ -36,6 +36,18 @@ public class UserService {
 //            return -1; //회원가입이 실패 했을 때
 //        }
     }
+    
+    @Transactional
+    public void update(Users users) {
+        // select해서 user 오브젝트를 DB로 부터 가져오는 이유는 영속화 하기 위해
+        Users persistance = userRepository.findById(users.getId()).orElseThrow(()->{
+            return new IllegalArgumentException("아이디를 찾기 못했습니다.");
+        });
+        String rawPassword = users.getPassword();
+        String encPassword = encoder.encode(rawPassword);
+        persistance.setPassword(encPassword);
+        persistance.setEmail(users.getEmail());
+    }
 
 
 /*

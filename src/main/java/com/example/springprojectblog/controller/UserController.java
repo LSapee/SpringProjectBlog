@@ -24,8 +24,8 @@ public class UserController {
         return "/user/loginForm";
     }
 
-    @PostMapping
-    public String join(){
-        return "aaa";
+    @GetMapping("/user/updateform")
+    public String updateForm(){
+        return "/user/updateform";
     }
 }
