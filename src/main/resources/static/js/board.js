@@ -33,23 +33,20 @@ index = {
         });//ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청
 
     },
-    deleteById: function () {
-
-        const id = $("#id").val();
+    deleteById: function(){
+        let id = $("#id").text();
 
         $.ajax({
-            type: "DELETE", //전송방식
-            url: "/api/board/" + id,
+            type: "DELETE",
+            url: "/api/board/"+id,
             dataType: "json"
-        }).done(function (resp) {
+        }).done(function(resp){
             alert("삭제가 완료되었습니다.");
-            console.log(resp);
             location.href = "/";
-        }).fail(function (error) {
-            console.log(JSON.stringify(error));
-        });//ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청
-
-    }
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
 };
 
 index.init();

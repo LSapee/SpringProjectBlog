@@ -1,20 +1,18 @@
 package com.example.springprojectblog.service;
 
 import com.example.springprojectblog.model.Board;
-import com.example.springprojectblog.model.Role;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.BoardRepository;
-import com.example.springprojectblog.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
@@ -41,6 +39,7 @@ public class BoardService {
 
     @Transactional
     public void del(int id){
+        System.out.println(id);
         boardRepository.deleteById(id);
     }
 }
