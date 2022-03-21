@@ -1,21 +1,24 @@
 package com.example.springprojectblog.controller.api;
 
 import com.example.springprojectblog.dto.ResponseDto;
-import com.example.springprojectblog.model.Role;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserApiController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody Users users){
@@ -29,7 +32,13 @@ public class UserApiController {
     @PutMapping("/user")
     public ResponseDto<Integer> update(@RequestBody Users users){
         userService.update(users);
+//        세션값은 변경되지 않은 상태, DB값은 변경되어있음.
+//        세션을 우리가 직접 변경하기
+        //        세션 등록
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(users.getUsername(), users.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+
     }
 
 

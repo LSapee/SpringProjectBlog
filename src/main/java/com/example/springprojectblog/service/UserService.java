@@ -4,6 +4,10 @@ import com.example.springprojectblog.model.Role;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +22,14 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+
+
     @Transactional
     public void save(Users users) {
 
         String rawPassword = users.getPassword();//원래 비밀번호
-        String endPassword =encoder.encode(rawPassword);//해쉬
+        String endPassword = encoder.encode(rawPassword);//해쉬
         users.setRole(Role.USER);
         users.setPassword(endPassword);
         userRepository.save(users);
@@ -36,17 +43,19 @@ public class UserService {
 //            return -1; //회원가입이 실패 했을 때
 //        }
     }
-    
+
     @Transactional
     public void update(Users users) {
         // select해서 user 오브젝트를 DB로 부터 가져오는 이유는 영속화 하기 위해
-        Users persistance = userRepository.findById(users.getId()).orElseThrow(()->{
+        Users persistance = userRepository.findById(users.getId()).orElseThrow(() -> {
             return new IllegalArgumentException("아이디를 찾기 못했습니다.");
         });
         String rawPassword = users.getPassword();
         String encPassword = encoder.encode(rawPassword);
         persistance.setPassword(encPassword);
         persistance.setEmail(users.getEmail());
+
+
     }
 
 
