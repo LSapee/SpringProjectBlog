@@ -64,4 +64,7 @@ error:failed to push some refs to -> github에 내 로컬저장소에 없는 파
     </div>
     
    바뀐점 i태그 안에 띄어쓰기
+
+   kakao 로그인 버튼 클릭시 하얀 화면만 나오면서 동의요구 창 안 뜸.
+   kakao OpenID Connect 활성화 설정 off인지 확인해볼 것
     

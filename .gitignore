@@ -35,6 +35,8 @@ build/
 ### VS Code ###
 .vscode/
 
+.loginForm.jsp
+
 
 ### DB관련 properties ###
 

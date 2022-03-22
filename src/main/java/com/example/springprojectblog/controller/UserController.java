@@ -31,4 +31,6 @@ public class UserController {
     public String updateForm(@AuthenticationPrincipal Principal principal){
         return "/user/updateform";
     }
+
+
 }
