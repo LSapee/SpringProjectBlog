@@ -18,13 +18,21 @@
                 <h3>${board.title}</h3>
             </div>
             <hr>
-        <div >
+        <div>
             <div>
                 ${board.content}
             </div>
 
         </div>
-        <hr>
+        <hr/>
+
+        <div >
+            <div class="card">
+                <div claas="card-body"><textarea class="form-control" rows= "1"></textarea></div>
+                <div class="card-footer"><button class ="btn btn-primary">등록</button></div>
+            </div>
+        </div>
+
     </div>
 
 <script src="/js/board.js"></script>

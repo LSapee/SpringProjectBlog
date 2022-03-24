@@ -23,7 +23,7 @@ public class Users {
     private int id; // 시퀀스,auto_increment
 
 //    not null 길이 20자까지
-    @Column(nullable = false, length = 30,unique = true)
+    @Column(nullable = false, length = 100,unique = true)
     private String username;
 
     @Column(nullable = false, length = 100)
@@ -35,6 +35,9 @@ public class Users {
 // DB는 Role타입이라는게 없어서
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
+    private String oauth; // 로그인 구별
 
     // 시간이 자동으로 입력됨
     @CreationTimestamp

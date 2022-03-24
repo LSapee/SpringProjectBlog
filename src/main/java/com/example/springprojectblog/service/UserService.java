@@ -23,6 +23,14 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    @Transactional(readOnly = true)
+    public Users findUser(String username){
+        Users users = userRepository.findByUsername(username).orElseGet(()->{
+           return new Users();
+        });
+        return users;
+    }
+
 
 
     @Transactional
@@ -50,10 +58,14 @@ public class UserService {
         Users persistance = userRepository.findById(users.getId()).orElseThrow(() -> {
             return new IllegalArgumentException("아이디를 찾기 못했습니다.");
         });
-        String rawPassword = users.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistance.setPassword(encPassword);
-        persistance.setEmail(users.getEmail());
+//        Validate check
+        if(persistance.getOauth()==null || persistance.getOauth().equals("")){
+            String rawPassword = users.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistance.setPassword(encPassword);
+            persistance.setEmail(users.getEmail());
+        }
+
 
 
     }
