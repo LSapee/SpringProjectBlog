@@ -26,13 +26,30 @@
         </div>
         <hr/>
 
-        <div >
+        <div>
             <div class="card">
-                <div claas="card-body"><textarea class="form-control" rows= "1"></textarea></div>
+                <div claas="card-body" style="padding:20px"><textarea class="form-control" rows= "1"></textarea></div>
                 <div class="card-footer"><button class ="btn btn-primary">등록</button></div>
             </div>
         </div>
-
+    <br/>
+<%--        댓글부분--%>
+        <div class="card">
+            <div class = "card-header">댓글리스트</div>
+            <ul id="reply--box" class = "list-group">
+                <c:forEach var="reply" items="${board.replys}">
+                    <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                        <div>${reply.content}</div>
+                        <div class="d-flex">
+                            <div class="font-italic">작성자 ${reply.users.username} nbsp;</div>
+                            <button class="badge">삭제</button>
+                            <div></div>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+<%--        댓글 완료--%>
     </div>
 
 <script src="/js/board.js"></script>

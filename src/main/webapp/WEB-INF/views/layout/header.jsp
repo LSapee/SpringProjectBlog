@@ -21,10 +21,10 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <style>
-        .container > .card {
-            float: left;
-            margin: 20px;
-        }
+        /*.container > .card {*/
+        /*    float: left;*/
+        /*    margin: 20px;*/
+        /*}*/
 
         .jumbotron {
             position: fixed;
