@@ -1,8 +1,10 @@
 package com.example.springprojectblog.service;
 
 import com.example.springprojectblog.model.Board;
+import com.example.springprojectblog.model.Reply;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.BoardRepository;
+import com.example.springprojectblog.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Transactional
     public void save(Board board, Users users) {
@@ -52,5 +57,18 @@ public class BoardService {
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
         //해당 함수로 종료시 service가 종료될 때 트랜젝션이 종료됩니다.
+    }
+
+    @Transactional
+    public void saveReply(Users users,int boardid, Reply requestReply) {
+
+        Board board =boardRepository.findById(boardid).orElseThrow(()->{
+            return new  IllegalArgumentException("댓글 작성 실패");
+        });
+
+        requestReply.setUsers(users);
+        requestReply.setBoard(board);
+
+        replyRepository.save(requestReply);
     }
 }
