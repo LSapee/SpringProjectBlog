@@ -1,10 +1,12 @@
 package com.example.springprojectblog.service;
 
+import com.example.springprojectblog.dto.ReplySaveRequestDto;
 import com.example.springprojectblog.model.Board;
 import com.example.springprojectblog.model.Reply;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.BoardRepository;
 import com.example.springprojectblog.repository.ReplyRepository;
+import com.example.springprojectblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,9 @@ public class BoardService {
 
     @Autowired
     private ReplyRepository replyRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public void save(Board board, Users users) {
@@ -61,15 +66,19 @@ public class BoardService {
     }
 
     @Transactional
-    public void saveReply(Users users, int boardid, Reply requestReply) {
+    public void saveReply(ReplySaveRequestDto replySaveRequestDto) {
 
-        Board board =boardRepository.findById(boardid).orElseThrow(()->{
-            return new  IllegalArgumentException("댓글 작성 실패");
+        Users users = userRepository.findById(replySaveRequestDto.getUserid()).orElseThrow(()->{
+            return new  IllegalArgumentException("유저 아이디를 찾을 수 없습니다.");
+        }); //영속화 완료
+
+        Board board =boardRepository.findById(replySaveRequestDto.getBoardid()).orElseThrow(()->{
+            return new  IllegalArgumentException("게시글을 찾을 수 없습니다.");
         });
 
-        requestReply.setUsers(users);
-        requestReply.setBoard(board);
+        Reply reply = new Reply();
+        reply.update(users,board,replySaveRequestDto.getContent());
 
-        replyRepository.save(requestReply);
+        replyRepository.save(reply);
     }
 }

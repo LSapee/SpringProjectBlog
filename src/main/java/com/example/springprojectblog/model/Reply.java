@@ -1,5 +1,6 @@
 package com.example.springprojectblog.model;
 
+import com.example.springprojectblog.dto.ReplySaveRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,10 @@ public class Reply {
     private Users users;
 
     private Timestamp createDate;
+
+    public void update(Users users, Board board, String content){
+        setUsers(users);
+        setBoard(board);
+        setContent(content);
+    }
 }
