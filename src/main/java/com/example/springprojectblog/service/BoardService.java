@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class BoardService {
+
     @Autowired
     private BoardRepository boardRepository;
 
@@ -60,7 +61,7 @@ public class BoardService {
     }
 
     @Transactional
-    public void saveReply(Users users,int boardid, Reply requestReply) {
+    public void saveReply(Users users, int boardid, Reply requestReply) {
 
         Board board =boardRepository.findById(boardid).orElseThrow(()->{
             return new  IllegalArgumentException("댓글 작성 실패");
