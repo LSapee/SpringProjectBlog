@@ -2,11 +2,9 @@ package com.example.springprojectblog.service;
 
 import com.example.springprojectblog.dto.ReplySaveRequestDto;
 import com.example.springprojectblog.model.Board;
-import com.example.springprojectblog.model.Reply;
 import com.example.springprojectblog.model.Users;
 import com.example.springprojectblog.repository.BoardRepository;
 import com.example.springprojectblog.repository.ReplyRepository;
-import com.example.springprojectblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,9 +22,6 @@ public class BoardService {
 
     @Autowired
     private ReplyRepository replyRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Transactional
     public void save(Board board, Users users) {
@@ -67,7 +62,7 @@ public class BoardService {
 
     @Transactional
     public void saveReply(ReplySaveRequestDto replySaveRequestDto) {
-
+        /*  replyRepositiory에서 함수로 영속화 처리함 네이티브 쿼리문
         Users users = userRepository.findById(replySaveRequestDto.getUserid()).orElseThrow(()->{
             return new  IllegalArgumentException("유저 아이디를 찾을 수 없습니다.");
         }); //영속화 완료
@@ -76,9 +71,10 @@ public class BoardService {
             return new  IllegalArgumentException("게시글을 찾을 수 없습니다.");
         });
 
+
         Reply reply = new Reply();
         reply.update(users,board,replySaveRequestDto.getContent());
-
-        replyRepository.save(reply);
+*/
+        replyRepository.rSave(replySaveRequestDto.getUserid(),replySaveRequestDto.getBoardid(),replySaveRequestDto.getContent());
     }
 }
