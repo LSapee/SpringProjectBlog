@@ -24,10 +24,12 @@ let index = {
             contentType:"application/json; charset=utf-8", //body데이터가 어떤 타입인지 (MIME)
             dataType:"json"//요청을 서버로해서 응답이 왔을 때
             }).done(function (resp){
-
-                alert("회원가입이 완료되었습니다.");
-                console.log(resp);
-                location.href="/";
+                if(resp.status === 500){
+                    alert("이미 존재하는 아이디입니다.")
+                }else{
+                    alert("회원가입이 완료되었습니다.");
+                    location.href="/";
+                }
             }).fail(function (error) {
                 alert(JSON.stringify(error));
             });//ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청
