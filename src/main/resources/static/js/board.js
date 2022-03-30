@@ -102,6 +102,18 @@ index = {
             alert(JSON.stringify(error));
         });//ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert요청
     },
+    replyDelete: function (boardid,replyid) {
+        $.ajax({
+            type: "DELETE",
+            url: `/api/board/${boardid}/reply/${replyid}`,
+            dataType: "json"//요청을 서버로해서 응답이 왔을 때
+        }).done(function (resp) {
+            alert("댓글 삭제 성공");
+            location.href=`/board/${boardid}`;
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+        },
 };
 
 index.init();
