@@ -4,7 +4,6 @@ import com.example.springprojectblog.controller.config.auth.PrincipalDetail;
 import com.example.springprojectblog.dto.ReplySaveRequestDto;
 import com.example.springprojectblog.dto.ResponseDto;
 import com.example.springprojectblog.model.Board;
-import com.example.springprojectblog.model.Reply;
 import com.example.springprojectblog.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

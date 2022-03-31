@@ -1,7 +1,6 @@
 package com.example.springprojectblog.controller;
 
 
-import com.example.springprojectblog.controller.config.auth.PrincipalDetail;
 import com.example.springprojectblog.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

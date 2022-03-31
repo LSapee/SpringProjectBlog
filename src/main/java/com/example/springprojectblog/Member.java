@@ -2,12 +2,8 @@ package com.example.springprojectblog;
 
 import lombok.*;
 
-//@Getter
-//@Setter
 @Data //Getter + Setter
-//@AllArgsConstructor // 전체 생성자
 @NoArgsConstructor // 빈 생성자
-//@RequiredArgsConstructor // final 붙은 애들에 대한 Constructor이 붙음
 public class Member {
     private int id;
     private String username;
